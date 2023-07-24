@@ -145,7 +145,7 @@ class Swiper extends Component {
             top: cardVerticalMargin / 2,
             left: cardHorizontalMargin / 2,
             width: cardWidth,
-            height: cardHeight,
+            // height: cardHeight,
         };
     };
 
