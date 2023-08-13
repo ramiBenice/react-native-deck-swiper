@@ -49,14 +49,14 @@ const rebuildStackAnimatedValues = props => {
 
     for (let position = 0; position < stackSize; position++) {
         stackPositionsAndScales[`stackPositionY${position}`] =
-            new Animated.Value(-stackScale * position * -0.2);
+            new Animated.Value(-stackScale * position * 0);
         stackPositionsAndScales[`stackPositionX${position}`] =
             new Animated.Value(stackScale * position * 0);
         stackPositionsAndScales[`stackWidth${position}`] = new Animated.Value(
             (100 - (stackScale * 2 * position * 100) / cardWidth) * 0.01,
         );
         stackPositionsAndScales[`stackHeight${position}`] = new Animated.Value(
-            (100 + (stackScale * 2 * position * 100) / cardHeight) * 0.01,
+            (100 + (stackScale * 1 * position * 100) / cardHeight) * 0.01,
         );
     }
 
@@ -546,7 +546,7 @@ class Swiper extends Component {
                 this.state[`stackWidth${stackSize}`] &&
                 this.state[`stackHeight${stackSize}`]
             ) {
-                const newSeparationY = -stackScale * (stackSize - 1) * -0.2;
+                const newSeparationY = -stackScale * (stackSize - 1) * 0;
                 const newSeparationX = stackScale * (stackSize - 1) * 0;
                 const newWidth =
                     (100 -
@@ -554,8 +554,9 @@ class Swiper extends Component {
                     0.01;
                 const newHeight =
                     (100 +
-                        (stackScale * 2 * (stackSize - 1) * 100) / cardHeight) *
+                        (stackScale * 1 * (stackSize - 1) * 100) / cardHeight) *
                     0.01;
+                const newOpacity = (stackSize - 1) * 0.2
                 Animated.parallel([
                     Animated.spring(this.state[`stackPositionY${stackSize}`], {
                         toValue: newSeparationY,
@@ -652,7 +653,7 @@ class Swiper extends Component {
             height - cardVerticalMargin * 2 - marginTop - marginBottom;
         for (let position = 0; position < stackSize; position++) {
             stackPositionsAndScales[`stackPositionY${position}`] =
-                new Animated.Value(-stackScale * position * -0.2);
+                new Animated.Value(-stackScale * position * 0);
             stackPositionsAndScales[`stackPositionX${position}`] =
                 new Animated.Value(stackScale * position * 0);
             stackPositionsAndScales[`stackWidth${position}`] =
@@ -662,7 +663,7 @@ class Swiper extends Component {
                 );
             stackPositionsAndScales[`stackHeight${position}`] =
                 new Animated.Value(
-                    (100 + (stackScale * 2 * position * 100) / cardHeight) *
+                    (100 + (stackScale * 1 * position * 100) / cardHeight) *
                         0.01,
                 );
         }
