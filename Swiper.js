@@ -36,16 +36,14 @@ const rebuildStackAnimatedValues = props => {
     const { height, width } = Dimensions.get('window');
     const {
         stackSize,
-        stackSeparation,
         stackScale,
-        cardVerticalMargin,
         cardHorizontalMargin,
         marginTop,
         marginBottom,
     } = props;
     const cardWidth = width - cardHorizontalMargin * 2;
     const cardHeight =
-        height - cardVerticalMargin * 2 - marginTop - marginBottom;
+        height - marginTop - marginBottom;
 
     for (let position = 0; position < stackSize; position++) {
         stackPositionsAndScales[`stackPositionY${position}`] =
@@ -129,23 +127,16 @@ class Swiper extends Component {
     };
 
     getCardStyle = () => {
-        const { height, width } = Dimensions.get('window');
+        const { width } = Dimensions.get('window');
         const {
-            cardVerticalMargin,
             cardHorizontalMargin,
-            marginTop,
-            marginBottom,
         } = this.props;
 
         const cardWidth = width - cardHorizontalMargin * 2;
-        const cardHeight =
-            height - cardVerticalMargin * 2 - marginTop - marginBottom;
 
         return {
-            top: cardVerticalMargin / 2,
             left: cardHorizontalMargin / 2,
             width: cardWidth,
-            // height: cardHeight,
         };
     };
 
@@ -526,7 +517,6 @@ class Swiper extends Component {
             infinite,
             showSecondCard,
             cards,
-            cardVerticalMargin,
             cardHorizontalMargin,
             marginTop,
             marginBottom,
@@ -536,7 +526,7 @@ class Swiper extends Component {
 
         const cardWidth = width - cardHorizontalMargin * 2;
         const cardHeight =
-            height - cardVerticalMargin * 2 - marginTop - marginBottom;
+            height - marginTop - marginBottom;
 
         while (stackSize-- >= 0 && showSecondCard && !swipedAllCards) {
             console.log('stackSize', stackSize, stackSize--);
@@ -640,9 +630,7 @@ class Swiper extends Component {
         const stackPositionsAndScales = {};
         const {
             stackSize,
-            stackSeparation,
             stackScale,
-            cardVerticalMargin,
             cardHorizontalMargin,
             marginTop,
             marginBottom,
@@ -650,7 +638,7 @@ class Swiper extends Component {
 
         const cardWidth = width - cardHorizontalMargin * 2;
         const cardHeight =
-            height - cardVerticalMargin * 2 - marginTop - marginBottom;
+            height - marginTop - marginBottom;
         for (let position = 0; position < stackSize; position++) {
             stackPositionsAndScales[`stackPositionY${position}`] =
                 new Animated.Value(-stackScale * position * 0);
@@ -852,7 +840,6 @@ class Swiper extends Component {
             containerStyle,
             swipeBackCard,
             testID,
-            cardVerticalMargin,
         } = this.props;
         return (
             <View

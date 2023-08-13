@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
     position: 'absolute',
+    justifyContent: 'center',
     top: 0,
     left: 0,
     right: 0,
